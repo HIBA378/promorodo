@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/6f3103b13c.js" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    >
+</head>
+<body>
+    
+    <nav>
+        <div class="logo">
+            <img src="15.jpg" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="container">Timer</a></li>
+            <li><a href="#todo">My To-DoList</a></li>
+            <li><a href="#info">About</a></li>
+            <li><a href="#how">Target Audience</a></li>
+            <li><a href="#mot">Motivation</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div id="container" class="container">
+            <h1>Pomodoro</h1>
+
+            <div class="painel">
+                <p id="work">Work</p>
+                <p id="break">Break</p>
+            </div>
+
+            <div id="timer" class="timer">
+                <div class="circle">
+                    <div class="time">
+                        <p id="minutes">25</p>
+                        <p>:</p>
+                        <p id="seconds">00</p>
+                    </div>
+                </div>
+                <div class="controls-container">
+                    <div class="controls">
+                        <button id="start" onclick="start()"><i class="fa-solid fa-play"></i></button>
+                        <button id="pause" onclick="pause()" style="display: none;"><i class="fa-solid fa-pause"></i></button>
+                        <a id="reset" href="#" onclick="reset()"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="todo" class="todo">
+        <div class="todo-image">
+            <img src="16.jpg" alt="Pomodoro technique illustration">
+        </div>
+        <div class="container">
+           
+            <div class="todo-content">
+                <h2> My To-Do List</h2>
+                <form id="todo-form">
+                    <input type="text" id="todo-input" placeholder="Enter a new task">
+                    <button type="button" onclick="addTask()">Add Task</button>
+                </form>
+                <ul id="todo-list">
+                    <!-- Les tâches seront ajoutées ici -->
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="info" class="info">
+        <div class="container">
+            <div class="info-content">
+                <div class="info-text">
+                    <h2>What is the Pomodoro technique?</h2>
+                    <p>The Pomodoro technique is a time management method developed by Francesco Cirillo in the late 1980s.
+                    It involves using a timer to divide work into 25-minute intervals, called "Pomodoros", separated by short 5-minute breaks.
+                    After 4 Pomodoros, a longer break of 15-30 minutes is recommended to maximize concentration and productivity.</p>
+                </div>
+                <div class="info-image">
+                    <img src="image copy.png" alt="Pomodoro technique illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="how">
+        <div class="container">
+            <div class="how-content">
+                <div class="how-image">
+                    <img src="7.jpg" alt="Pomodoro technique illustration">
+                </div>
+                <div class="how-text">
+                    <h2>Who uses the Pomodoro Technique?</h2>
+                    <p>The Pomodoro Technique is used by people who need to focus on their activities to achieve certain goals.
+                    Many of your favorite YouTubers, influencers and entrepreneurs are likely to use this technique to be more productive.
+                    If you find yourself easily distracted and procrastinating, this may be your antidote.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mot" class="mot">
+        <div class="container">
+            <div class="mot-content">
+                <div class="mot-text">
+                    <h2>Motivation</h2>
+                    <p>Are you tired? Demotivated? Are you watching your classes without any desire to get started?
+                    You are not alone. But listen carefully: everything is at stake now.
+                    Every minute you spend hesitating, someone else is using it to move forward. But you too have a dream, a goal. Passing an exam, getting your diploma, building your future... it all starts with a decision: to act.
+                    Yes, it will be difficult. There will be moments of doubt, moments when you want to stop everything. But remember why you started. Imagine yourself succeeding. Imagine achieving your goal, feeling this pride, seeing the results of your efforts.
+
+                    Take a deep breath...and get started. NOW.</p>
+                </div>
+                <div class="mot-image">
+                    <img src="8.jpg" alt="Pomodoro technique illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+    <footer>
+        <p>© 2025 HIBA'S PROMODORO- Tous droits réservés</p>
+    </footer>
+</body>
+</html>

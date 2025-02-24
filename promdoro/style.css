@@ -1,0 +1,354 @@
+:root {
+    font-size: 62.5%; /* 1rem = 10px */
+
+    --color-primary: hsl(192, 24%, 96%);
+    --color-secondary: hsla(340, 81%, 45%, 0.973);
+    --color-font: hsla(340, 81%, 45%, 0.973);
+    --color-shadow: hsla(340, 81%, 45%, 0.973);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: var(--color-primary);
+    font-size: 1.6rem;
+    font-family: 'Open sans', sans-serif;
+    background-image: url('image.png'); /* Ajout de l'image de fond */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+p, i, h1 {
+    color: var(--color-font);
+}
+
+i {
+    font-size: 5.2rem;
+}
+
+h1 {
+    font-size: 7.2rem;
+}
+
+/* ==== CONTENT ==== */
+
+section {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    width: min(42.5rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.painel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    width: 20rem;
+    margin-block: 5rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow); 
+    box-shadow: 0px 0px 15px 10px var(--color-shadow);
+    background-color: rgba(255, 255, 255, 0.8); /* Blanc avec 80% d'opacité */
+    transform: translateY(-3rem); /* Déplacer le panneau vers le haut */
+}
+.painel p {
+    opacity: .9;
+    transition: 1s ease-in;
+    font-weight: bold;
+}
+
+.painel p.active {
+    opacity: 1;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 15px 10px var(--color-shadow); 
+    box-shadow: 0px 0px 15px 10px var(--color-shadow);
+    position: relative;
+    transform: translateY(-4rem); /* Déplacer le timer vers le haut */
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26rem;
+    height: 26rem;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    position: relative;
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    width: 95%;
+    height: 95%;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+}
+
+.time {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.time p {
+    font-size: 5.6rem;
+}
+
+.time p:nth-of-type(2) {
+    position: relative;
+    top: -.5rem;
+    margin-inline: 1rem;
+}
+
+/* === CONTROLS CONTAINER SEMI-TRANSPARENT (TAILLE RÉDUITE) === */
+.controls-container {
+    position: absolute;
+    bottom: -5rem; /* Ajusté pour éviter le chevauchement */
+    left: 50%;
+    transform: translateX(-50%) translateY(1rem); /* Déplacer le conteneur et les icônes vers le haut */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16rem; /* Largeur réduite */
+    height: 5rem; /* Hauteur réduite */
+    background: rgba(255, 255, 255, 0.7); /* Fond semi-transparent */
+    border-radius: 0.8rem; /* Coins arrondis ajustés */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Ombre allégée */
+}
+
+.controls {
+    display: flex;
+    gap: 1.5rem; /* Réduction de l'espacement entre les icônes */
+    align-items: center;
+    justify-content: center;
+}
+
+.controls button, .controls a {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 2.5rem; /* Réduction de la taille des icônes */
+    color: var(--color-font);
+}
+
+.controls #reset {
+    display: none;
+}
+
+/* === SECTIONS STYLES === */
+.info, .how, .mot {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    background-image: url("12 copy.jpg"); 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.info .container,
+.how .container,
+.mot .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.info-content, .how-content, .mot-content {
+    display: flex;
+    justify-content: space-between; /* Aligne l'image à gauche et le texte à droite */
+    align-items: center;
+    width: 100%;
+    gap: 3rem;
+}
+
+.info-text, .how-text, .mot-text {
+    text-align: left;
+    width: 50%;
+}
+    
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: var(--color-secondary);
+    padding: 10px; /* Réduire le padding pour diminuer la hauteur */
+    position: fixed; /* Position fixe pour garder le nav en haut */
+    top: 0; /* Placer nav en haut */
+    width: 100%; /* Faire en sorte que le nav prenne toute la largeur */
+    z-index: 1000; /* Assurer que le nav soit au-dessus des autres éléments */
+}
+
+.info-content img, .how-content img, .mot-content img {
+    width: 450px !important; /* Ajuster la largeur de l'image */
+    height: 450px !important; /* Ajuster la hauteur de l'image */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: block;
+}
+
+
+.info-text h2, .how-text h2, .mot-text h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-secondary);
+}
+
+.info-text p, .how-text p, .mot-text p {
+    font-size: 1.8rem;
+    color: #222121d7;
+    line-height: 1.6;
+}
+footer {
+    background-color:var(--color-secondary); 
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 2rem;
+}
+
+footer p {
+    margin: 0;
+    color: #fff;
+
+}
+header {
+    text-align: center; /* Centrer le contenu dans le header */
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+nav .nav-links li {
+    margin-left: 20px;
+}
+nav .nav-links li a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+nav .nav-links li a:hover {
+    color: var(--color-secondary);
+}
+nav .logo {
+    margin-right: auto; /* Pousser le logo à gauche */
+}
+img {
+    width: 50px; /* Ajuster la largeur du logo */
+    height: 50px; /* Maintenir le ratio d'aspect */
+}
+/* To-Do List Section */
+.todo {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Ajoute un peu d'opacité */
+    background-image: url("12 copy.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; /* Ajoute cette ligne */
+    z-index: 1; /* Assure-toi que cet élément est au-dessus */
+}
+
+.todo-content {
+    opacity: 1;
+    color: var(--color-secondary);
+    font-weight: bold;
+    z-index: 2; /* Assure-toi que ce contenu est au-dessus du fond */
+}
+
+#todo-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#todo-input {
+    padding: 16px;
+    font-size: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+#todo-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: hsl(0, 100%, 99%);
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#todo-form button:hover {
+    background-color: var(--color-secondary);
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: var(--color-secondary);
+    color: #fff; /* Texte en blanc */
+}
+
+#todo-list li.completed {
+    text-decoration: line-through;
+    color: #ddd;
+}
+
+ .todo-image img {
+    width: 450px !important; /* Ajuster la largeur de l'image */
+    height: 450px !important; /* Ajuster la hauteur de l'image */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    display: block;
+}
+
+
