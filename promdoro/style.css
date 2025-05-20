@@ -157,7 +157,7 @@ section {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 2.5rem; /* Réduction de la taille des icônes */
+    font-size: 2rem; /* Réduction de la taille des icônes */
     color: var(--color-font);
 }
 

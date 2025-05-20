@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Fichier XML contenant la liste des livres -->
+<bookstore>
+
+    <!-- Livre de cuisine -->
+    <book category="cooking">
+        <title lang="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price devise="dollars">30.00</price>
+    </book>
+
+    <!-- Livre pour enfants -->
+    <book category="children">
+        <title lang="en">Harry Potter</title>
+        <author>J. K. Rowling</author>
+        <year>2005</year>
+        <price devise="dollars">29.99</price>
+    </book>
+
+    <!-- Livre sur le web -->
+    <book category="web">
+        <title lang="en">XQuery Kick Start</title>
+        <author>James McGovern</author>
+        <author>Per Bothner</author>
+        <author>Kurt Cagle</author>
+        <author>James Linn</author>
+        <author>Vaidyanathan Nagarajan</author>
+        <year>2003</year>
+        <price devise="dollars">49.99</price>
+    </book>
+
+    <!-- Nouveau livre sur la science -->
+    <book category="science">
+        <title lang="en">Quantum Physics</title>
+        <author>Albert Einstein</author>
+        <year>1915</year>
+        <price devise="dollars">79.99</price>
+    </book>
+
+    <!-- Livre sur la technologie -->
+    <book category="technology">
+        <title lang="en">Artificial Intelligence Basics</title>
+        <author>John McCarthy</author>
+        <year>1956</year>
+        <price devise="dollars">89.99</price>
+    </book>
+
+    <!-- Livre de fiction -->
+    <book category="fiction">
+        <title lang="en">The Great Gatsby</title>
+        <author>F. Scott Fitzgerald</author>
+        <year>1925</year>
+        <price devise="dollars">10.99</price>
+    </book>
+
+    <!-- Livre d'histoire -->
+    <book category="history">
+        <title lang="fr">Napoléon : Une vie</title>
+        <author>Andrew Roberts</author>
+        <year>2014</year>
+        <price devise="euros">25.00</price>
+    </book>
+<book category="poetry">
+    <title lang="en">Leaves of Grass</title>
+    <author>Walt Whitman</author>
+    <year>1855</year>
+    <price devise="dollars">15.50</price>
+</book>
+
+<!-- Livre de philosophie -->
+<book category="philosophy">
+    <title lang="en">The Republic</title>
+    <author>Plato</author>
+    <year>-380</year>
+    <price devise="dollars">12.99</price>
+</book>
+
+<!-- Livre de science-fiction -->
+<book category="science-fiction">
+    <title lang="en">Dune</title>
+    <author>Frank Herbert</author>
+    <year>1965</year>
+    <price devise="dollars">18.99</price>
+</book>
+
+<!-- Livre de biographies -->
+<book category="biography">
+    <title lang="fr">Steve Jobs : La biographie</title>
+    <author>Walter Isaacson</author>
+    <year>2011</year>
+    <price devise="euros">22.50</price>
+</book>
+
+<!-- Livre d'art -->
+<book category="art">
+    <title lang="en">The Story of Art</title>
+    <author>E. H. Gombrich</author>
+    <year>1950</year>
+    <price devise="dollars">34.00</price>
+</book>
+</bookstore>

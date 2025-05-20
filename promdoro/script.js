@@ -1,10 +1,11 @@
-let workTittle = document.getElementById('work');
-let breakTittle = document.getElementById('break');
-let minutesDisplay = document.getElementById('minutes');
-let secondsDisplay = document.getElementById('seconds');
-let startButton = document.getElementById('start');
-let resetButton = document.getElementById('reset');
-let pauseButton = document.getElementById('pause');
+// Déclarations des éléments du DOM et des variables
+let workTittle = document.getElementById('work'); // Élément titre de la section travail
+let breakTittle = document.getElementById('break'); // Élément titre de la section pause
+let minutesDisplay = document.getElementById('minutes'); // Élément affichage des minutes
+let secondsDisplay = document.getElementById('seconds'); // Élément affichage des secondes
+let startButton = document.getElementById('start'); // Bouton démarrer
+let resetButton = document.getElementById('reset'); // Bouton réinitialiser
+let pauseButton = document.getElementById('pause'); // Bouton pause
 
 let workTime = 25; // Temps de travail par défaut (25 minutes)
 let shortBreakTime = 5; // Temps de pause court par défaut (5 minutes)
@@ -22,8 +23,8 @@ window.onload = () => {
 
 // Fonction pour mettre à jour l'affichage du minuteur
 function updateDisplay(mins, secs) {
-    minutesDisplay.innerHTML = mins.toString().padStart(2, '0');
-    secondsDisplay.innerHTML = secs.toString().padStart(2, '0');
+    minutesDisplay.innerHTML = mins.toString().padStart(2, '0'); // Affiche les minutes avec deux chiffres
+    secondsDisplay.innerHTML = secs.toString().padStart(2, '0'); // Affiche les secondes avec deux chiffres
 }
 
 // Fonction qui démarre le minuteur
@@ -32,9 +33,9 @@ function start() {
     pauseButton.style.display = "block"; // Affiche le bouton pause
     resetButton.style.display = "block"; // Affiche le bouton reset
 
-    if (!isPaused) {
+    if (!isPaused) { // Si le minuteur n'est pas en pause
         minutes = workTime; // Initialise le minuteur avec le temps de travail
-        seconds = 0;
+        seconds = 0; 
     }
 
     interval = setInterval(timerFunction, 1000); // Démarre le minuteur avec un intervalle de 1 seconde
@@ -42,78 +43,75 @@ function start() {
 
 // Fonction qui gère le décompte du minuteur
 function timerFunction() {
-    if (seconds === 0) {
-        if (minutes === 0) {
+    if (seconds === 0) { // Si les secondes sont à zéro
+        if (minutes === 0) { // Si les minutes sont à zéro
             clearInterval(interval); // Stoppe le minuteur
-            showNotification("Temps de travail terminé ! Cliquez pour commencer la pause.");
-            audio = playSound();
 
-            sessionCount++; // 🔥 On incrémente ici pour bien détecter la 4ème session
+            showNotification("Temps de travail terminé ! Cliquez pour commencer la pause."); // Affiche la notification
+            audio = playSound(); // Joue le son
 
-            if (sessionCount % 4 === 0) {
-                console.log("💤 Pause longue !");
-                startBreak(longBreakTime); // ⏳ Lancer une pause longue toutes les 4 sessions
+            sessionCount++; // On incrémente ici pour bien détecter la 4ème session
+
+            if (sessionCount % 4 === 0) { // Si le compteur de session est divisible par 4
+                console.log(" Pause longue !");
+                startBreak(longBreakTime); // Lancer une pause longue toutes les 4 sessions
             } else {
-                console.log("🛑 Pause courte !");
+                console.log(" Pause courte !");
                 startBreak(shortBreakTime); // Pause courte sinon
             }
-            return;
+            return; // Sort de la fonction
         } else {
-            minutes--;
-            seconds = 59;
+            minutes--; // Décrémente les minutes
+            seconds = 59; // Réinitialise les secondes à 59
         }
     } else {
-        seconds--;
+        seconds--; // Décrémente les secondes
     }
-    updateDisplay(minutes, seconds);
+    updateDisplay(minutes, seconds); // Met à jour l'affichage
 }
-
-
 
 // Fonction pour démarrer la pause
 function startBreak(breakTime) {
-    console.log(`Démarrage d'une pause de ${breakTime} minutes`); // 🔍 Debugging
+    console.log(`Démarrage d'une pause de ${breakTime} minutes`); // Debugging
 
-    workTittle.classList.remove('active');
-    breakTittle.classList.add('active');
+    workTittle.classList.remove('active'); // Retire la surbrillance de la section de travail
+    breakTittle.classList.add('active'); // Ajoute la surbrillance à la section de pause
 
-    minutes = breakTime;
-    seconds = 0;
+    minutes = breakTime; // Initialise les minutes avec le temps de pause
+    seconds = 0; 
 
-    clearInterval(interval); // 🔥 S'assurer qu'aucun autre intervalle ne tourne
-    interval = setInterval(breakTimer, 1000);
+    clearInterval(interval); // S'assurer qu'aucun autre intervalle ne tourne
+    interval = setInterval(breakTimer, 1000); // Démarre le minuteur de pause avec un intervalle de 1 seconde
 }
-
 
 // Fonction qui gère le décompte pendant la pause
 function breakTimer() {
-    if (seconds === 0) {
-        if (minutes === 0) {
+    if (seconds === 0) { // Si les secondes sont à zéro
+        if (minutes === 0) { // Si les minutes sont à zéro
             clearInterval(interval); // Stoppe le minuteur de pause
             
-            workTittle.classList.add('active');
-            breakTittle.classList.remove('active');
+            workTittle.classList.add('active'); // Ajoute la surbrillance à la section de travail
+            breakTittle.classList.remove('active'); // Retire la surbrillance de la section de pause
 
-            startButton.style.display = "block";
-            pauseButton.style.display = "none";
-            resetButton.style.display = "none";
+            startButton.style.display = "block"; // Affiche le bouton start
+            pauseButton.style.display = "none"; // Cache le bouton pause
+            resetButton.style.display = "none"; // Cache le bouton reset
 
-            minutes = workTime;
-            seconds = 0;
-            updateDisplay(minutes, seconds);
+            minutes = workTime; // Initialise les minutes avec le temps de travail
+            seconds = 0; 
+            updateDisplay(minutes, seconds); // Met à jour l'affichage
 
-            // 🛑 Ne pas réinitialiser `sessionCount` ici ! Sinon, la pause longue ne marche jamais
+            // Ne pas réinitialiser `sessionCount` ici ! Sinon, la pause longue ne marche jamais
             return;
         } else {
-            minutes--;
-            seconds = 59;
+            minutes--; // Décrémente les minutes
+            seconds = 59; // Réinitialise les secondes à 59
         }
     } else {
-        seconds--;
+        seconds--; // Décrémente les secondes
     }
-    updateDisplay(minutes, seconds);
+    updateDisplay(minutes, seconds); // Met à jour l'affichage
 }
-
 
 // Fonction qui met en pause le minuteur
 function pause() {
@@ -129,7 +127,7 @@ function reset() {
     sessionCount = 0; // Réinitialise le compteur de sessions
     isPaused = false; // Définit le statut du minuteur sur "non-paused"
     minutes = workTime; // Réinitialise le temps à celui de travail
-    seconds = 0;
+    seconds = 0; 
     workTittle.classList.add('active'); // Met en surbrillance la section de travail
     breakTittle.classList.remove('active'); // Retire la surbrillance de la section de pause
     updateDisplay(minutes, seconds); // Met à jour l'affichage
@@ -137,34 +135,37 @@ function reset() {
     pauseButton.style.display = "none"; // Cache le bouton pause
     resetButton.style.display = "none"; // Cache le bouton reset
 }
+
+// Fonction pour ajouter une tâche
 function addTask() {
-    const input = document.getElementById("todo-input");
-    const task = input.value.trim();
-    
-    if (task !== "") {
-        const list = document.getElementById("todo-list");
-        const listItem = document.createElement("li");
-        listItem.textContent = task;
-        
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.onclick = function() {
-            list.removeChild(listItem);
+    const input = document.getElementById("todo-input"); // Champ de saisie
+    const task = input.value.trim(); // Récupère et nettoie la tâche
+
+    if (task !== "") { // Si la tâche n'est pas vide
+        const list = document.getElementById("todo-list"); // Liste des tâches
+        const listItem = document.createElement("li"); // Nouvel élément de liste
+        listItem.textContent = task; // Définit le texte de l'élément de liste
+
+        const deleteButton = document.createElement("button"); // Bouton supprimer
+        deleteButton.textContent = "Delete"; // Texte du bouton
+        deleteButton.onclick = function() { // Définition de l'événement clic
+            list.removeChild(listItem); // Supprime l'élément de la liste
         };
-        
-        listItem.appendChild(deleteButton);
-        list.appendChild(listItem);
-        input.value = "";
+
+        listItem.appendChild(deleteButton); // Ajoute le bouton à l'élément de liste
+        list.appendChild(listItem); // Ajoute l'élément de liste à la liste
+        input.value = ""; // Vide le champ de saisie
     }
 }
+
 // Vérifier si les notifications sont autorisées
 function showNotification(message) {
-    if (Notification.permission === "granted") {
-        new Notification("Pomodoro Timer", { body: message, icon: "timer-icon.png" });
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                new Notification("Pomodoro Timer", { body: message, icon: "timer-icon.png" });
+    if (Notification.permission === "granted") { // Si les notifications sont autorisées
+        new Notification("Pomodoro Timer", { body: message, icon: "timer-icon.png" }); // Crée et affiche la notification
+    } else if (Notification.permission !== "denied") { // Si la permission n'est pas refusée
+        Notification.requestPermission().then(permission => { // Demande la permission
+            if (permission === "granted") { // Si la permission est accordée
+                new Notification("Pomodoro Timer", { body: message, icon: "timer-icon.png" }); // Crée et affiche la notification
             }
         });
     }
@@ -172,42 +173,43 @@ function showNotification(message) {
 
 // Jouer un son
 function playSound() {
-    let audio = new Audio("Morning Alarm.mp3"); // Assure-toi d'avoir un fichier "notification.mp3"
-    audio.play();
+    let audio = new Audio("Morning Alarm.mp3"); // Crée un nouvel objet audio
+    audio.play(); // Joue le son
 }
 
+// Modifier la fonction `timerFunction()`
 // Modifier la fonction `timerFunction()`
 let audio; // Déclaration globale pour l'objet audio
 
 function timerFunction() {
-    if (seconds === 0) {
-        if (minutes === 0) {
+    if (seconds === 0) { // Si les secondes sont à zéro
+        if (minutes === 0) { // Si les minutes sont à zéro
             sessionCount++; // Incrémente le compteur de sessions
             clearInterval(interval); // Arrête le minuteur
-            
-            // 🔔 Afficher la notification et jouer le son
+
+            // Afficher la notification et jouer le son
             showNotification("Temps de travail terminé ! Cliquez pour commencer la pause.");
             audio = playSound(); // Jouer le son et stocker l'objet audio
 
             // Vérifier si le bouton existe déjà pour éviter les doublons
-            if (!document.getElementById("stop-sound")) {
-                let stopSoundButton = document.createElement("button");
-                stopSoundButton.textContent = "Arrêter le son et commencer la pause";
-                stopSoundButton.id = "stop-sound";
-                stopSoundButton.style.position = "fixed";
-                stopSoundButton.style.top = "50%";
-                stopSoundButton.style.left = "50%";
-                stopSoundButton.style.transform = "translate(-50%, -50%)";
-                stopSoundButton.style.padding = "10px 20px";
-                stopSoundButton.style.fontSize = "16px";
-                stopSoundButton.style.backgroundColor = "#ff5555";
-                stopSoundButton.style.color = "white";
-                stopSoundButton.style.border = "none";
-                stopSoundButton.style.cursor = "pointer";
-                stopSoundButton.style.zIndex = "1000";
+            if (!document.getElementById("stop-sound")) { 
+                let stopSoundButton = document.createElement("button"); // Crée un nouveau bouton
+                stopSoundButton.textContent = "Arrêter le son et commencer la pause"; // Texte du bouton
+                stopSoundButton.id = "stop-sound"; // ID du bouton
+                stopSoundButton.style.position = "fixed"; // Position fixe du bouton
+                stopSoundButton.style.top = "50%"; // Position haute du bouton
+                stopSoundButton.style.left = "50%"; // Position gauche du bouton
+                stopSoundButton.style.transform = "translate(-50%, -50%)"; // Centrage du bouton
+                stopSoundButton.style.padding = "10px 20px"; // Padding du bouton
+                stopSoundButton.style.fontSize = "16px"; // Taille de la police
+                stopSoundButton.style.backgroundColor = "#ff5555"; // Couleur de fond
+                stopSoundButton.style.color = "white"; // Couleur du texte
+                stopSoundButton.style.border = "none"; // Sans bordure
+                stopSoundButton.style.cursor = "pointer"; // Curseur de la souris
+                stopSoundButton.style.zIndex = "1000"; // Niveau d'empilement
 
                 stopSoundButton.onclick = function() {
-                    if (audio) {
+                    if (audio) { 
                         audio.pause(); // Arrêter le son
                         audio.currentTime = 0; // Remettre le son au début
                     }
@@ -221,25 +223,25 @@ function timerFunction() {
                     }
                 };
 
-                document.body.appendChild(stopSoundButton);
+                document.body.appendChild(stopSoundButton); // Ajoute le bouton au corps du document
             }
+            return; // Sort de la fonction
         } else {
-            minutes--;
-            seconds = 59;
+            minutes--; // Décrémente les minutes
+            seconds = 59; // Réinitialise les secondes à 59
         }
     } else {
-        seconds--;
+        seconds--; // Décrémente les secondes
     }
-    updateDisplay(minutes, seconds);
+    updateDisplay(minutes, seconds); // Met à jour l'affichage
 }
 
 // Modifier la fonction playSound() pour retourner l'objet audio
 function playSound() {
-    let sound = new Audio("Morning Alarm.mp3");
+    let sound = new Audio("Morning Alarm.mp3"); // Crée un nouvel objet audio
     sound.loop = true; // Faire boucler le son jusqu'à l'arrêt manuel
-    sound.play();
-    return sound;
+    sound.play(); // Joue le son
+    return sound; // Retourne l'objet audio
 }
 
-    updateDisplay(minutes, seconds);
-
+updateDisplay(minutes, seconds); // Met à jour l'affichage

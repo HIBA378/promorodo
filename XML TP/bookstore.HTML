@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliothèque en ligne</title>
+    <script src="books.js" defer></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5dc; /* Beige, rappelant un vieux papier */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-family: 'Garamond', serif;
+            font-size: 3em;
+            color: #6b4226; /* Brun riche et chaleureux */
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        #demo {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* Fond blanc pour contraste et lisibilité */
+            border: 2px solid #6b4226; /* Bordure assortie au titre */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #6b4226;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #8b0000; /* Rouge foncé pour un look classique */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #b22222;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bibliothèque en ligne</h1>
+    <div id="demo">
+     
+        <div id="booksTable"></div>
+    </div>
+</body>
+</html>
